@@ -16,13 +16,13 @@ const Navber = () => {
             <NavLink>Profile</NavLink>
           </ul>
         </div>
-        <div className="space-x-3">
-          <button>
+        <div className="flex space-x-3">
+          <NavLink to="/login">
             <Button title={"Login"}></Button>
-          </button>
-          <button>
+          </NavLink>
+          <NavLink to="/register">
             <Button title={"Register"}></Button>
-          </button>
+          </NavLink>
         </div>
       </div>
     </div>

@@ -4,14 +4,14 @@ import logo from "../../assets/Authentication/graphingsine.mp4";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 
-const Login = () => {
-  const [isOpen, setIsopen] = useState(false)
-    const handleLogin = (e) => {
+const Register = () => {
+  const [isOpen, setIsopen] = useState(false);
+  const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email,password);
+    console.log(email, password);
   };
   return (
     <div className=" flex items-center justify-center min-h-screen">
@@ -19,10 +19,29 @@ const Login = () => {
         <div className="px-10">
           <div className="hero-content flex-col ">
             <div className="text-center lg:text-left">
-              <h1 className="text-4xl font-bold">Login now!</h1>
+              <h1 className="text-4xl font-bold">Register now!</h1>
             </div>
             <div className="card shrink-0 w-full max-w-sm ">
               <form onSubmit={handleLogin} className="card-body">
+                <div className="form-control">
+                  <label className="input input-bordered rounded-sm bg-transparent flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      className="w-4 h-4 opacity-70"
+                    >
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+                    </svg>
+
+                    <input
+                      type="text"
+                      name="username"
+                      className="grow"
+                      placeholder="Username"
+                    />
+                  </label>
+                </div>
                 <div className="form-control">
                   <label className="input input-bordered rounded-sm bg-transparent flex items-center gap-2">
                     <svg
@@ -57,16 +76,16 @@ const Login = () => {
                       />
                     </svg>
                     <input
-                      type={isOpen? "text": "password"}
+                      type={isOpen ? "text" : "password"}
                       name="password"
                       className="grow"
                       placeholder="Password"
                     />
-                    <button onClick={()=>setIsopen(!isOpen)} className="absolute text-xl right-10">
-                        {
-                            isOpen? <AiOutlineEye /> : <AiOutlineEyeInvisible/>
-                        }
-                      
+                    <button
+                      onClick={() => setIsopen(!isOpen)}
+                      className="absolute text-xl right-10"
+                    >
+                      {isOpen ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
                     </button>
                   </label>
                 </div>
@@ -77,7 +96,7 @@ const Login = () => {
                   </button>
                 </div>
                 <p>
-                  New user? <Link to="/register">Register</Link>
+                  Already have account! <Link to="/login">Login</Link>
                 </p>
               </form>
             </div>
@@ -91,4 +110,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
