@@ -12,7 +12,6 @@ const Footer = () => {
           </p>
           <p>Copyright © 2024 - All right reserved</p>
         </aside>
-        
       </footer>
     </div>
   );
