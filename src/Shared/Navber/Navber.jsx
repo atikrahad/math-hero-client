@@ -10,8 +10,8 @@ const Navber = () => {
           <Logo></Logo>
           <ul className="space-x-4">
             <NavLink>Home</NavLink>
-            <NavLink>Problem</NavLink>
-            <NavLink>Contest</NavLink>
+            <NavLink to="/dashboard">Problem</NavLink>
+            <NavLink to="/dashboard/addproblem">Add Problem</NavLink>
             <NavLink>Leaderboard</NavLink>
             <NavLink>Profile</NavLink>
           </ul>

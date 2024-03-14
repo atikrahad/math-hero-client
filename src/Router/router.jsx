@@ -4,6 +4,7 @@ import Login from "../Pages/Authentikate/Login";
 import Register from "../Pages/Authentikate/Register";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Problems from "../Layout/Dashboard/Pages/Problems/Problems";
+import AddEditor from "../Layout/Dashboard/Pages/Createproblem/AddEditor";
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         {
           index: true,
           element: <Problems></Problems>
+        },
+        {
+          path: "/dashboard/addproblem",
+          element: <AddEditor></AddEditor>
         },
       ]
     }
