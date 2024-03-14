@@ -13,6 +13,7 @@ const Navber = () => {
             <NavLink to="/dashboard">Problem</NavLink>
             <NavLink to="/dashboard/addproblem">Add Problem</NavLink>
             <NavLink>Leaderboard</NavLink>
+            <NavLink to="notes">My Note</NavLink>
             <NavLink>Profile</NavLink>
           </ul>
         </div>

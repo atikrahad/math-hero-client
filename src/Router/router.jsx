@@ -5,6 +5,7 @@ import Register from "../Pages/Authentikate/Register";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Problems from "../Layout/Dashboard/Pages/Problems/Problems";
 import AddEditor from "../Layout/Dashboard/Pages/Createproblem/AddEditor";
+import Note from "../Layout/Dashboard/Pages/MyNote/Note";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         {
           path: "/dashboard/addproblem",
           element: <AddEditor></AddEditor>
+        },
+        {
+          path: "/dashboard/notes",
+          element: <Note></Note>
         },
       ]
     }
