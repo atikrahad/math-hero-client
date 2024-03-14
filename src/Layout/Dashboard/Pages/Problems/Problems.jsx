@@ -1,3 +1,4 @@
+import Category from "./ProblemnComponents/Category";
 import Table from "./ProblemnComponents/Table";
 
 const Problems = () => {
@@ -29,7 +30,9 @@ const Problems = () => {
         <div className="shadow-md rounded-md bg-slate-50 min-h-screen col-span-9">
             <Table></Table>
         </div>
-        <div className="shadow-md rounded-md bg-slate-50 col-span-3"></div>
+        <div className=" col-span-3">
+          <Category></Category>
+        </div>
       </div>
     </div>
   );
