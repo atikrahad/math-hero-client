@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import Button from "../../Components/Button";
-import logo from "../../assets/Authentication/graphingsine.mp4";
+import image from "../../assets/Authentication/image.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
+import Logo from "../../Components/Logo";
 
 const Register = () => {
   const [isOpen, setIsopen] = useState(false);
@@ -15,8 +16,11 @@ const Register = () => {
   };
   return (
     <div className=" flex items-center justify-center min-h-screen">
-      <div className="max-w-screen-2xl md:max-h-screen overflow-hidden flex items-center mx-auto bg-[#f3f3f3]">
-        <div className="px-10">
+      <div
+        className="max-w-screen-2xl border md:max-h-screen overflow-hidden relative flex items-center bg-[#f3f3f3]
+       mx-auto"
+      >
+        <div className="px-10 w-[35%]">
           <div className="hero-content flex-col ">
             <div className="text-center lg:text-left">
               <h1 className="text-4xl font-bold">Register now!</h1>
@@ -102,8 +106,21 @@ const Register = () => {
             </div>
           </div>
         </div>
-        <div className="hidden md:contents">
-          <video className="h-full" src={logo} muted loop autoPlay></video>
+        ;
+        <div className="hidden  w-[65%] min-h-screen border md:contents">
+          <img className="h-full" src={image} alt="" />
+
+          <div className="absolute md:right-6  lg:right-52  w-[50%] flex-col flex items-center justify-center">
+            <Logo></Logo>
+            <h1 className="text-4xl font-medium">Welcome To Math Hero</h1>
+            <p className="text-justify">
+              Unlock a world where numbers unleash creativity, logic, and
+              problem-solving skills. Whether you're a math enthusiast, a
+              student eager to learn, or a teacher looking for new ways to
+              inspire, MathWiz is your go-to portal. But first, let's ensure
+              your journey is secure and personalized.
+            </p>
+          </div>
         </div>
       </div>
     </div>
