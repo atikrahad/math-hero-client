@@ -4,15 +4,20 @@ import image from "../../assets/Authentication/image.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import Logo from "../../Components/Logo";
+import { useDispatch } from "react-redux";
+import { cteateUser } from "../../Redux/Features/authSlice";
 
 const Register = () => {
   const [isOpen, setIsopen] = useState(false);
+  const dispath = useDispatch();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    const name = form.username.value;
+    console.log(email, password, name);
+    dispath(cteateUser({ email, password, name }));
   };
   return (
     <div className=" flex items-center justify-center min-h-screen">
