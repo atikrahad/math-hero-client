@@ -8,7 +8,6 @@ import { setToggle, setUser } from "../Redux/Features/authSlice";
 const Privateroute = ({ children }) => {
   const dispatch = useDispatch();
   const { email, isPending } = useSelector((state) => state.authenTication);
-
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       console.log(user);
@@ -41,7 +40,7 @@ const Privateroute = ({ children }) => {
   if (email) {
     return children;
   }
-  return <Navigate to="/login"></Navigate>;
+  return <Navigate to="/login" ></Navigate>;
 };
 
 export default Privateroute;

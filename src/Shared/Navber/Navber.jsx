@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import Button from "../../Components/Button";
 import Logo from "../../Components/Logo";
+import { signOut } from "firebase/auth";
+import auth from "../../Firebase/firebase";
 
 const Navber = () => {
   return (
@@ -23,6 +25,7 @@ const Navber = () => {
           </NavLink>
           <NavLink to="/register">
             <Button title={"Register"}></Button>
+            <button onClick={()=> signOut(auth)}>logout</button>
           </NavLink>
         </div>
       </div>

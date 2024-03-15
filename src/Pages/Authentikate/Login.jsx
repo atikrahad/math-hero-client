@@ -1,18 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button";
 import image from "../../assets/Authentication/image.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import Logo from "../../Components/Logo";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../Redux/Features/authSlice";
 
 const Login = () => {
   const [isOpen, setIsopen] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    dispatch(loginUser({ email, password }));
+
+    navigate("/dashboard");
   };
   return (
     <div className=" flex items-center justify-center min-h-screen">

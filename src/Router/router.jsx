@@ -19,11 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: (
-      <Privateroute>
-        <Register />
-      </Privateroute>
-    ),
+    element: <Register/>,
   },
   {
     path: "/dashboard",
@@ -39,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/addproblem",
-        element: <AddEditor></AddEditor>,
+        element: <Privateroute><AddEditor></AddEditor></Privateroute>,
       },
       {
         path: "/dashboard/notes",
