@@ -6,40 +6,47 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import Problems from "../Layout/Dashboard/Pages/Problems/Problems";
 import AddEditor from "../Layout/Dashboard/Pages/Createproblem/AddEditor";
 import Note from "../Layout/Dashboard/Pages/MyNote/Note";
-
+import Privateroute from "./Privateroute";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Landingpage></Landingpage>,
-    },
-    {
-      path: "/login",
-      element: <Login></Login>
-    }
-    ,
-    {
-      path: "/register",
-      element: <Register/>
-    },
-    {
-      path: "/dashboard",
-      element: <Dashboard></Dashboard>,
-      children: [
-        {
-          index: true,
-          element: <Problems></Problems>
-        },
-        {
-          path: "/dashboard/addproblem",
-          element: <AddEditor></AddEditor>
-        },
-        {
-          path: "/dashboard/notes",
-          element: <Note></Note>
-        },
-      ]
-    }
-  ]);
+  {
+    path: "/",
+    element: <Landingpage></Landingpage>,
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/register",
+    element: (
+      <Privateroute>
+        <Register />
+      </Privateroute>
+    ),
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        index: true,
+        element: (
+          <Privateroute>
+            <Problems></Problems>
+          </Privateroute>
+        ),
+      },
+      {
+        path: "/dashboard/addproblem",
+        element: <AddEditor></AddEditor>,
+      },
+      {
+        path: "/dashboard/notes",
+        element: <Note></Note>,
+      },
+    ],
+  },
+]);
 
 export default router;

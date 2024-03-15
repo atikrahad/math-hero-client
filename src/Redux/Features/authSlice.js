@@ -25,7 +25,15 @@ export const cteateUser = createAsyncThunk(
 const authSlice = createSlice({
   name: "authentication",
   initialState,
-  reducers: {},
+  reducers: {
+    setUser: (state, { payload }) => {
+      state.name = payload.name;
+      state.email = payload.email;
+    },
+    setToggle: (state, { payload }) => {
+      state.isPending = payload.isPending
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(cteateUser.pending, (state) => {
@@ -51,5 +59,5 @@ const authSlice = createSlice({
       });
   },
 });
-
+export const { setUser, setToggle } = authSlice.actions;
 export default authSlice.reducer;
