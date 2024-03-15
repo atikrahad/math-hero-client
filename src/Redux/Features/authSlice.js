@@ -19,7 +19,15 @@ export const cteateUser = createAsyncThunk(
     await updateProfile(auth.currentUser, {
       displayName: name,
     });
-    console.log(user);
+    if (user.user.email) {
+      fetch(`${import.meta.env.VITE_url}/user`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ email, name }),
+      });
+    }
     return {
       name: user.user.displayName,
       email: user.user.email,

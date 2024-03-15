@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button";
 import image from "../../assets/Authentication/image.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -10,6 +10,7 @@ import { cteateUser } from "../../Redux/Features/authSlice";
 const Register = () => {
   const [isOpen, setIsopen] = useState(false);
   const dispath = useDispatch();
+  const navigate = useNavigate()
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,6 +19,7 @@ const Register = () => {
     const name = form.username.value;
     console.log(email, password, name);
     dispath(cteateUser({ email, password, name }));
+    navigate("/dashboard")
   };
   return (
     <div className=" flex items-center justify-center min-h-screen">

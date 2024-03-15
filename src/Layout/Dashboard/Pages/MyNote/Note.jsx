@@ -1,6 +1,9 @@
 import { IoAdd } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import { usePostNotelistMutation } from "../../../../Redux/Features/NotesAPI/baseApi";
 const Note = () => {
+  const [addpost, result] = usePostNotelistMutation()
+  
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="shadow-md flex items-center justify-between px-10 my-10 py-5 rounded-md bg-slate-50">
@@ -16,7 +19,7 @@ const Note = () => {
         </div>
         <div className="flex gap-3 items-center">
           <h1 className="text-xl">Create Note List</h1>
-          <button className="text-4xl text-green-600 border">
+          <button  className="text-4xl text-green-600 border">
             <IoAdd />
           </button>
         </div>
