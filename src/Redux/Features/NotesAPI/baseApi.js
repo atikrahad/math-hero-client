@@ -6,7 +6,7 @@ const baseApi = createApi({
   endpoints: (builder) => ({
     getNotelist: builder.query({
       query: ({ email }) => `/notelist?email=${email}`,
-      providesTags: ['Post']
+      providesTags: ["Post"],
     }),
     postNotelist: builder.mutation({
       query: (payload) => ({
@@ -17,9 +17,23 @@ const baseApi = createApi({
           "Content-type": "application/json; charset=UTF-8",
         },
       }),
-      invalidatesTags: ['Post']
+      invalidatesTags: ["Post"],
     }),
+    getNote: builder.query({
+      query: ({noteId, email})=> `/notes?email=${email}&noteId=${noteId}`
+    }),
+    postNote: builder.mutation({
+      query: (payload)=>({
+        url: '/note',
+        method: "POST",
+        body: payload,
+        headers: {
+          "Content-type" : "application/json; charset=UTF-8"
+        }
+      }),
+      invalidatesTags: ["Post"]
+    })
   }),
 });
-export const { useGetNotelistQuery, usePostNotelistMutation } = baseApi;
+export const { useGetNotelistQuery, usePostNotelistMutation, usePostNoteMutation } = baseApi;
 export default baseApi;

@@ -1,17 +1,14 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import { RxCross2 } from "react-icons/rx";
 
-export default function Modal({isOpen, setIsOpen, title, content}) {
-  
-
+export default function Modal({ isOpen, setIsOpen, title, content }) {
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(true);
   }
 
   return (
     <>
-      
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -45,6 +42,12 @@ export default function Modal({isOpen, setIsOpen, title, content}) {
                     {title}
                   </Dialog.Title>
                   {content}
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="absolute right-2 top-2 text-red-600 text-3xl"
+                  >
+                    <RxCross2></RxCross2>
+                  </button>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -52,5 +55,5 @@ export default function Modal({isOpen, setIsOpen, title, content}) {
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }

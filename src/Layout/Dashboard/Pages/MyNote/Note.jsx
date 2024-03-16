@@ -4,6 +4,7 @@ import { useState } from "react";
 import AddnoteListform from "./NoteComponents/AddnoteListform";
 import { useGetNotelistQuery } from "../../../../Redux/Features/NotesAPI/baseApi";
 import { useSelector } from "react-redux";
+import Addnoteform from "./NoteComponents/Addnoteform";
 const Note = () => {
   const { email } = useSelector((state) => state.authenTication);
 
@@ -55,6 +56,7 @@ const Note = () => {
             >
               <IoAdd />
             </button>
+            <Addnoteform id={item._id} isOpen={isnoteOpen} setIsOpen={setIsnoteOpen}></Addnoteform>
           </div>
         ))}
       </div>
