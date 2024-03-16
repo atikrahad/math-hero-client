@@ -34,6 +34,21 @@ const baseApi = createApi({
       }),
       invalidatesTags: ["Post"],
     }),
+    getMyproblems: builder.query({
+      query: ({email}) => `/myproblems?email=${email}`,
+      providesTags: ["Post"]
+    }),
+    postProblem: builder.mutation({
+      query: (payload) => ({
+        url: '/problem',
+        method: "POST",
+        body: payload,
+        headers: {
+          "Content-type" : "application/json; charset=UTF-8"
+        }
+      }),
+      invalidatesTags: ["Post"]
+    })
   }),
 });
 export const {
@@ -41,5 +56,8 @@ export const {
   usePostNotelistMutation,
   useGetNoteQuery,
   usePostNoteMutation,
+  usePostProblemMutation,
+  useGetMyproblemsQuery
+
 } = baseApi;
 export default baseApi;
