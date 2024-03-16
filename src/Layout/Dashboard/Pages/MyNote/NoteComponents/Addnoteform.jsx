@@ -5,23 +5,24 @@ import { usePostNoteMutation } from "../../../../../Redux/Features/NotesAPI/base
 import { useSelector } from "react-redux";
 
 const Addnoteform = ({ isOpen, id, setIsOpen }) => {
-    const [addNewPost, response] = usePostNoteMutation()
-    const {email} = useSelector(state => state.authenTication)
+  const [addNewPost, response] = usePostNoteMutation();
+  const { email } = useSelector((state) => state.authenTication);
   const editor = useRef();
-  const [notes, seNotes] = useState("")
-  const handleAddnote = ()=>{
-    const noteId = id
+  const [notes, seNotes] = useState("");
+  const handleAddnote = () => {
+    const noteId = id;
     const note = {
-        noteId,
-        email,
-        notes
-    }
+      noteId,
+      email,
+      notes,
+    };
     addNewPost(note)
-    .unwrap()
-    .then(()=>{})
-    .then(error=> console.log(error))
-    setIsOpen(false)
-  }
+      .unwrap()
+      .then(() => {})
+      .then((error) => console.log(error));
+    setIsOpen(false);
+    seNotes("");
+  };
   return (
     <Modal
       isOpen={isOpen}
@@ -35,7 +36,12 @@ const Addnoteform = ({ isOpen, id, setIsOpen }) => {
             onBlur={true}
             onChange={(newValue) => seNotes(newValue)}
           ></JoditEditor>
-          <button onClick={handleAddnote} className="mt-5 border px-3 py-1 rounded-md">Create a Note</button>
+          <button
+            onClick={handleAddnote}
+            className="mt-5 border px-3 py-1 rounded-md"
+          >
+            Create a Note
+          </button>
         </div>
       }
     ></Modal>

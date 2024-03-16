@@ -1,15 +1,19 @@
 import { IoAdd } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import AddnoteListform from "./NoteComponents/AddnoteListform";
-import { useGetNotelistQuery } from "../../../../Redux/Features/NotesAPI/baseApi";
+import {
+  useGetNoteQuery,
+  useGetNotelistQuery,
+} from "../../../../Redux/Features/NotesAPI/baseApi";
 import { useSelector } from "react-redux";
 import Addnoteform from "./NoteComponents/Addnoteform";
 const Note = () => {
+  const [noteId, setNoteId] = useState("");
+  console.log(noteId);
   const { email } = useSelector((state) => state.authenTication);
-
+  const { data: notes } = useGetNoteQuery({ email, noteId });
   const { data } = useGetNotelistQuery({ email });
-  data?.map((item) => console.log(item.bgColor));
   let [isOpen, setIsOpen] = useState(false);
   let [isnoteOpen, setIsnoteOpen] = useState(false);
   return (
@@ -46,21 +50,43 @@ const Note = () => {
             style={{ backgroundColor: item.bgColor }}
             className={`px-10 flex items-center gap-2 py-2 font-bold rounded-md `}
           >
-            <NavLink style={{ color: item.textColor }}>
+            <button
+              onClick={() => setNoteId(item._id)}
+              style={{ color: item.textColor }}
+            >
               {item.noteListName}
-            </NavLink>
+            </button>
 
             <button
-              onClick={() => setIsnoteOpen(!isnoteOpen)}
+              onClick={() => {
+                setIsnoteOpen(!isnoteOpen);
+                setNoteId(item._id);
+              }}
               className="text-4xl text-green-600 border"
             >
               <IoAdd />
             </button>
-            <Addnoteform id={item._id} isOpen={isnoteOpen} setIsOpen={setIsnoteOpen}></Addnoteform>
+            <Addnoteform
+              id={noteId}
+              isOpen={isnoteOpen}
+              setIsOpen={setIsnoteOpen}
+            ></Addnoteform>
           </div>
         ))}
       </div>
-      <div className="min-h-[60vh]"></div>
+      <div className="min-h-[60vh] my-10 grid gap-5 grid-cols-1 md:grid-cols-2">
+        {notes?.map((i) => (
+          <div className="relative bg-slate-100 p-5 rounded-md shadow-lg">
+            <div
+              className=""
+              dangerouslySetInnerHTML={{ __html: i.notes }}
+            ></div>
+            <button className="absolute top-2 right-2">
+              <BsThreeDotsVertical />
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

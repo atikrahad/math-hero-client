@@ -20,20 +20,26 @@ const baseApi = createApi({
       invalidatesTags: ["Post"],
     }),
     getNote: builder.query({
-      query: ({noteId, email})=> `/notes?email=${email}&noteId=${noteId}`
+      query: ({ noteId, email }) => `/notes?email=${email}&noteId=${noteId}`,
+      providesTags: ["Post"],
     }),
     postNote: builder.mutation({
-      query: (payload)=>({
-        url: '/note',
+      query: (payload) => ({
+        url: "/note",
         method: "POST",
         body: payload,
         headers: {
-          "Content-type" : "application/json; charset=UTF-8"
-        }
+          "Content-type": "application/json; charset=UTF-8",
+        },
       }),
-      invalidatesTags: ["Post"]
-    })
+      invalidatesTags: ["Post"],
+    }),
   }),
 });
-export const { useGetNotelistQuery, usePostNotelistMutation, usePostNoteMutation } = baseApi;
+export const {
+  useGetNotelistQuery,
+  usePostNotelistMutation,
+  useGetNoteQuery,
+  usePostNoteMutation,
+} = baseApi;
 export default baseApi;
