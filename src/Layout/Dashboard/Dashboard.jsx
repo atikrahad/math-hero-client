@@ -6,7 +6,7 @@ import Footer from "../../Shared/Footer/Footer";
 const Dashboard = () => {
   return (
     <div id="dashboard">
-      <Navber></Navber>
+      <Navber shadwo={"shadow-lg"}></Navber>
       <Outlet></Outlet>
       <Footer></Footer>
     </div>

@@ -20,7 +20,7 @@ const Landingpage = () => {
   }, [email]);
   return (
     <div>
-      <Navber></Navber>
+      <Navber posi={"absolute"}></Navber>
       <Banner></Banner>
       <Howcanuse></Howcanuse>
       <Footer></Footer>

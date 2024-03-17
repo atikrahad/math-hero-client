@@ -6,7 +6,8 @@ import auth from "../../Firebase/firebase";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetUserQuery } from "../../Redux/Features/NotesAPI/baseApi";
-const Navber = () => {
+import { Link } from "react-scroll";
+const Navber = ({ posi, shadwo }) => {
   const { email, name } = useSelector((state) => state.authenTication);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -30,12 +31,27 @@ const Navber = () => {
   }, [theme]);
 
   return (
-    <div className=" shadow-lg ">
+    <div className={`${posi} ${shadwo} w-full`}>
       <div className="flex justify-between items-center py-4 mx-auto max-w-screen-xl ">
         <div className="flex items-center gap-5">
           <Logo></Logo>
           <ul className="space-x-4">
-            {!email && <NavLink>Home</NavLink>}
+            {!email && (
+              <div className="flex gap-5 text-2xl font-medium items-center">
+                <Link to="banner" spy={true} smooth={true} activeClass="active">
+                  Home
+                </Link>
+                <Link to="how" spy={true} smooth={true} activeClass="active">
+                  Explore
+                </Link>
+                <Link to="how" spy={true} smooth={true} activeClass="active">
+                  Explore
+                </Link>
+                <Link to="how" spy={true} smooth={true} activeClass="active">
+                  Explore
+                </Link>
+              </div>
+            )}
 
             {/* dashboard route */}
 
