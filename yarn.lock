@@ -2761,11 +2761,6 @@ jodit@^4.0.18:
   dependencies:
     autobind-decorator "^2.4.0"
 
-jquery@^1.12.3:
-  version "1.12.4"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-1.12.4.tgz#01e1dfba290fe73deba77ceeacb0f9ba2fec9e0c"
-  integrity sha512-UEVp7PPK9xXYSk8xqXCJrkXnKZtlgWkd2GsAQbMRFK6S/ePU2JN5G2Zum8hIVjzR3CpdfSqdqAzId/xd4TJHeg==
-
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -2857,6 +2852,11 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
+load-script@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
+  integrity sha512-kPEjMFtZvwL9TaZo0uZ2ml+Ye9HUMmPwbYRJ324qF9tqMejwykJ5ggTyvzmrbBeapCAbk98BSbTeovHEEP1uCA==
+
 localforage@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/localforage/-/localforage-1.10.0.tgz#5c465dc5f62b2807c3a84c0c6a1b1b3212781dd4"
@@ -2934,13 +2934,6 @@ mathlive@^0.98.6:
   integrity sha512-5rRnVa1Xc9iD+f3sfQ6CWgL0GIIq0Fl6A/FbM5gZcrMaEeYn34DFIxUnLLLMgpb8vc/LZhJ1s9dDCqxv2bYTBw==
   dependencies:
     "@cortex-js/compute-engine" "0.22.0"
-
-mathquill@^0.10.1-a:
-  version "0.10.1-a"
-  resolved "https://registry.yarnpkg.com/mathquill/-/mathquill-0.10.1-a.tgz#bf2ca569010063ac34bcd5d529adc0837cd53c3f"
-  integrity sha512-snSAEwAtwdwBFSor+nVBnWWQtTw67kgAgKMyAIxuz4ZPboy0qkWZmd7BL3lfOXp/INihhRlU1PcfaAtDaRhmzA==
-  dependencies:
-    jquery "^1.12.3"
 
 merge2@^1.3.0:
   version "1.4.1"
@@ -3300,6 +3293,18 @@ react-latex@^2.0.0:
   integrity sha512-x17uDCfqBgR+5ZF/zplRCuHdEbX22CJlVipOqMUinRMoiOwh5fr3jbjD4zqVQ8pIs4AnF0BWPDR2S7Fyd8Snxw==
   dependencies:
     katex "^0.10.2"
+
+react-mathjax@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-mathjax/-/react-mathjax-1.0.1.tgz#a8c282e75d277a201632dfd07edf41edda372b4b"
+  integrity sha512-+mjFcciZY3GQoqiQm3aRTyDjgBKuoaXpY+SCONX00jScuPpTKwnASeFMS5+pbTIzDf5zPT2Y9ZZfQ9U/d4CKtQ==
+  dependencies:
+    load-script "^1.0.0"
+
+react-mathtex@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-mathtex/-/react-mathtex-1.0.1.tgz#fc47498d911d2a0c454f54aaa8707fc455ec71d1"
+  integrity sha512-l8XK7PZqkX/RfQf5c1s5ZIAnJceNQg74YM+Wj6OAkrzNZx5y8uDsSIFflhJOqj3Ri8pmsX/n3IGdb6FCJ1qZhg==
 
 react-redux@^9.1.0:
   version "9.1.0"

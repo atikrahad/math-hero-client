@@ -18,11 +18,11 @@ const Category = () => {
           </button>
         ))}
       </div>
-      <div className="shadow-md gap-10 flex items-center justify-center h-60 rounded-md bg-slate-50">
+      <div className="shadow-md gap-10 flex items-center justify-center h-60 rounded-md badge-ghost">
         <div className="flex flex-col items-center">
           <h1 className="text-4xl font-bold">1</h1>
 
-          <h1 className="text-4xl font-bold border-t-2 border-black">100</h1>
+          <h1 className="text-4xl font-bold border-t-2">100</h1>
         </div>
         <div>
           <div className="flex items-center gap-5 justify-between">

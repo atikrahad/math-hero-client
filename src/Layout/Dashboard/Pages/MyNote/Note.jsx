@@ -18,7 +18,7 @@ const Note = () => {
   let [isnoteOpen, setIsnoteOpen] = useState(false);
   return (
     <div className="max-w-screen-xl mx-auto">
-      <div className="shadow-md flex items-center justify-between px-10 my-10 py-5 rounded-md bg-slate-50">
+      <div className="shadow-md flex items-center justify-between px-10 my-10 py-5 rounded-md badge-ghost">
         <div className="flex items-baseline gap-5">
           <h1 className="text-xl">Choose Background Color</h1>
           <p className="w-3 h-3 rounded-full bg-red-600"></p>
@@ -76,7 +76,7 @@ const Note = () => {
       </div>
       <div className="min-h-[60vh] my-10 grid gap-5 grid-cols-1 md:grid-cols-2">
         {notes?.map((i) => (
-          <div className="relative bg-slate-100 p-5 rounded-md shadow-lg">
+          <div className="relative badge-ghost p-5 rounded-md shadow-lg">
             <div
               className=""
               dangerouslySetInnerHTML={{ __html: i.notes }}

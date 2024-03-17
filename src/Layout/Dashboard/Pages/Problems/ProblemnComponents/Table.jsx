@@ -30,9 +30,9 @@ const Table = () => {
   return (
     <div className="container">
       <table className="w-full " {...getTableProps()}>
-        <thead className="h-20 bg-slate-100">
+        <thead className="h-20 badge-ghost">
           {headerGroups.map((HG) => (
-            <tr className="" {...HG.getHeaderGroupProps()}>
+            <tr className="shadow-md" {...HG.getHeaderGroupProps()}>
               {HG.headers.map((coloum) => (
                 <th className="text-start px-3" {...coloum.getHeaderProps()}>
                   {coloum.render("Header")}
@@ -45,7 +45,7 @@ const Table = () => {
           {rows.map((item, index) => {
             prepareRow(item);
             return (
-              <tr className="border-b h-12" key={index} {...item.getRowProps}>
+              <tr className=" h-12" key={index} {...item.getRowProps}>
                 {item.cells.map((cell, index) => (
                   <td className="px-3" key={index} {...cell.getCellProps}>
                     {cell.render("Cell")}
