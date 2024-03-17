@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { Navigate, useNavigate } from "react-router-dom";
 const initialState = {
   name: "",
   email: "",
@@ -26,7 +27,15 @@ export const cteateUser = createAsyncThunk(
           "content-type": "application/json",
         },
         body: JSON.stringify({ email, name }),
-      });
+      }
+      )
+      .then(res => res.json())
+      .then(data => {
+        
+        const Navigate = useNavigate()
+        Navigate('/dashboard')
+        
+      })
     }
     return {
       name: user.user.displayName,
@@ -40,6 +49,10 @@ export const loginUser = createAsyncThunk(
   async ({ email, password }) => {
     const user = await signInWithEmailAndPassword(auth, email, password);
     console.log(user);
+    {
+     const Navigate = useNavigate()
+     Navigate('/dashboard')
+    }
     return {
       name: user.user.displayName,
       email: user.user.email,

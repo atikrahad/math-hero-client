@@ -40,7 +40,8 @@ const Privateroute = ({ children }) => {
   if (email) {
     return children;
   }
-  return <Navigate to="/login" ></Navigate>;
+
+  return <Navigate to="/"></Navigate>;
 };
 
 export default Privateroute;

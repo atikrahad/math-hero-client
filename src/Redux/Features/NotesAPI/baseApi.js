@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { useSelector } from "react-redux";
+// const { email } = useSelector((state) => state.authenTication);
 const baseApi = createApi({
   reducerPath: "notes",
   baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_url}` }),
@@ -35,20 +37,23 @@ const baseApi = createApi({
       invalidatesTags: ["Post"],
     }),
     getMyproblems: builder.query({
-      query: ({email}) => `/myproblems?email=${email}`,
-      providesTags: ["Post"]
+      query: ({ email }) => `/myproblems?email=${email}`,
+      providesTags: ["Post"],
     }),
     postProblem: builder.mutation({
       query: (payload) => ({
-        url: '/problem',
+        url: "/problem",
         method: "POST",
         body: payload,
         headers: {
-          "Content-type" : "application/json; charset=UTF-8"
-        }
+          "Content-type": "application/json; charset=UTF-8",
+        },
       }),
-      invalidatesTags: ["Post"]
-    })
+      invalidatesTags: ["Post"],
+    }),
+    getUser: builder.query({
+      query: (payload) => `/user?email=${payload}`,
+    }),
   }),
 });
 export const {
@@ -57,7 +62,7 @@ export const {
   useGetNoteQuery,
   usePostNoteMutation,
   usePostProblemMutation,
-  useGetMyproblemsQuery
-
+  useGetMyproblemsQuery,
+  useGetUserQuery,
 } = baseApi;
 export default baseApi;
