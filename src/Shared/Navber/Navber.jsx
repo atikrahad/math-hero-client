@@ -3,8 +3,14 @@ import Button from "../../Components/Button";
 import Logo from "../../Components/Logo";
 import { signOut } from "firebase/auth";
 import auth from "../../Firebase/firebase";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { setThemes } from "../../Redux/Theme/themeSlice";
+import { MdModeNight, MdLightMode } from "react-icons/md";
 
 const Navber = () => {
+  const [theme, setTheme] = useState(true);
+  const dispatch = useDispatch();
   return (
     <div className=" shadow-lg ">
       <div className="flex justify-between items-center py-4 mx-auto max-w-screen-xl ">
@@ -20,12 +26,20 @@ const Navber = () => {
           </ul>
         </div>
         <div className="flex space-x-3">
+          <button
+            onClick={() => {
+              setTheme(!theme);
+              dispatch(setThemes(theme));
+            }}
+          >
+            {theme ? <MdLightMode /> : <MdModeNight />}
+          </button>
           <NavLink to="/login">
             <Button title={"Login"}></Button>
           </NavLink>
           <NavLink to="/register">
             <Button title={"Register"}></Button>
-            <button onClick={()=> signOut(auth)}>logout</button>
+            <button onClick={() => signOut(auth)}>logout</button>
           </NavLink>
         </div>
       </div>
