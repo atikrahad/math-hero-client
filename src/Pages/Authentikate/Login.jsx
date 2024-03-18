@@ -20,7 +20,7 @@ const Login = () => {
     console.log(email, password);
     dispatch(loginUser({ email, password }));
 
-    navigate("/dashboard");
+    navigate("/dashboard/profile");
   };
   return (
     <div className=" flex items-center justify-center min-h-screen">

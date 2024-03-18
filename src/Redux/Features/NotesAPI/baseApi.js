@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { useSelector } from "react-redux";
-// const { email } = useSelector((state) => state.authenTication);
 const baseApi = createApi({
   reducerPath: "notes",
   baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_url}` }),
@@ -51,9 +50,9 @@ const baseApi = createApi({
       }),
       invalidatesTags: ["Post"],
     }),
-    getUser: builder.query({
-      query: (payload) => `/user?email=${payload}`,
-    }),
+    getProblem: builder.query({
+      query: ()=> '/problems',
+    })
   }),
 });
 export const {
@@ -63,6 +62,6 @@ export const {
   usePostNoteMutation,
   usePostProblemMutation,
   useGetMyproblemsQuery,
-  useGetUserQuery,
+  useGetProblemQuery
 } = baseApi;
 export default baseApi;

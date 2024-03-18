@@ -1,26 +1,34 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTable } from "react-table";
+import { FcViewDetails } from "react-icons/fc";
+import { Link } from "react-router-dom";
 const Table = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("problem.json")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+  const [data, setData] = useState([])
+  useEffect(()=>{
+    fetch(`${import.meta.env.VITE_url}/problems`)
+    .then(dat => dat.json())
+    .then(res=> setData(res))
+  },[setData])
+
   console.log(data);
+  
   const columns = useMemo(
     () => [
       {
         Header: "Name",
-        accessor: "title",
+        accessor: "author-name",
       },
       {
-        Header: "Type",
-        accessor: "problemType",
+        Header: "Problem Name",
+        accessor: "problemTitle",
       },
       {
         Header: "Priotity",
-        accessor: "problemPriority",
+        accessor: "priority",
+      },
+      {
+        Header: "Details",
+        accessor:()=> <Link> <FcViewDetails className="text-3xl"/></Link>,
       },
     ],
     []

@@ -10,7 +10,6 @@ const Privateroute = ({ children }) => {
   const { email, isPending } = useSelector((state) => state.authenTication);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log(user);
       if (user) {
         dispatch(
           setUser({
@@ -32,6 +31,8 @@ const Privateroute = ({ children }) => {
       }
     });
   }, []);
+
+
 
   if (isPending) {
     return <h1>Loading</h1>;

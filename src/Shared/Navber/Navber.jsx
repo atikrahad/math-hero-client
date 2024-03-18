@@ -1,12 +1,10 @@
 import { NavLink } from "react-router-dom";
 import Button from "../../Components/Button";
 import Logo from "../../Components/Logo";
-import { signOut } from "firebase/auth";
-import auth from "../../Firebase/firebase";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useGetUserQuery } from "../../Redux/Features/NotesAPI/baseApi";
 import { Link } from "react-scroll";
+import { useGetUserQuery } from "../../Redux/Features/userApis/userApi";
 const Navber = ({ posi, shadwo }) => {
   const { email, name } = useSelector((state) => state.authenTication);
   const [theme, setTheme] = useState(
@@ -101,7 +99,7 @@ const Navber = ({ posi, shadwo }) => {
             </div>
           )}
           {email && (
-            <NavLink>
+            <NavLink title="Profile" to="profile">
               {data?.profileImg ? (
                 <img
                   className="h-12 w-12 rounded-full"
@@ -120,9 +118,6 @@ const Navber = ({ posi, shadwo }) => {
               )}
             </NavLink>
           )}
-          <NavLink to="/">
-            <button onClick={() => signOut(auth)}>logout</button>
-          </NavLink>
         </div>
       </div>
     </div>

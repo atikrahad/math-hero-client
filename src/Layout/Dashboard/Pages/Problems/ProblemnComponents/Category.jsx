@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import Button from "../../../../../Components/Button";
 
 const Category = () => {
-  const [datas, setDatas] = useState([]);
-  useEffect(() => {
-    fetch("problem.json")
-      .then((res) => res.json())
-      .then((data) => setDatas(data));
-  }, []);
+  const [datas, setDatas] = useState([])
+  useEffect(()=>{
+    fetch(`${import.meta.env.VITE_url}/problems`)
+    .then(dat => dat.json())
+    .then(res=> setDatas(res))
+  },[setDatas])
 
   return (
     <div className="flex flex-col gap-3">
       <div className=" flex flex-wrap gap-2 min-h-96 ">
         {datas.map((item, index) => (
           <button key={index}>
-            <Button title={item.problemType} />
+            <Button title={item.mathCategory} />
           </button>
         ))}
       </div>

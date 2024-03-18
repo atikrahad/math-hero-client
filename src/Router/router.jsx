@@ -7,6 +7,8 @@ import Problems from "../Layout/Dashboard/Pages/Problems/Problems";
 import AddEditor from "../Layout/Dashboard/Pages/Createproblem/AddEditor";
 import Note from "../Layout/Dashboard/Pages/MyNote/Note";
 import Privateroute from "./Privateroute";
+import Profile from "../Layout/Dashboard/Pages/Profile/Profile";
+import Details from "../Layout/Dashboard/Pages/Problems/Details";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/notes",
         element: <Note></Note>,
+      },
+      {
+        path: "/dashboard/profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "/dashboard/:id",
+        element: <Details></Details>,
       },
     ],
   },
