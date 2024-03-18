@@ -55,7 +55,7 @@ const Navber = ({ posi, shadwo }) => {
 
             {email && <NavLink to="/dashboard">Problem</NavLink>}
             {email && <NavLink to="/dashboard/addproblem">Add Problem</NavLink>}
-            {email && <NavLink>Leaderboard</NavLink>}
+            {email && <NavLink to="/dashboard/leaderboard">Leaderboard</NavLink>}
             {email && <NavLink to="notes">My Note</NavLink>}
           </ul>
         </div>

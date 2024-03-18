@@ -9,6 +9,7 @@ import Note from "../Layout/Dashboard/Pages/MyNote/Note";
 import Privateroute from "./Privateroute";
 import Profile from "../Layout/Dashboard/Pages/Profile/Profile";
 import Details from "../Layout/Dashboard/Pages/Problems/Details";
+import Leaderboard from "../Layout/Dashboard/Pages/Leaderboard/Leaderboard";
 
 const router = createBrowserRouter([
   {
@@ -25,14 +26,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Privateroute><Dashboard></Dashboard></Privateroute>,
+    element: <Dashboard></Dashboard>,
     children: [
       {
         index: true,
         element: (
-          <Privateroute>
+          
             <Problems></Problems>
-          </Privateroute>
+          
         ),
       },
       {
@@ -41,11 +42,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/notes",
-        element: <Note></Note>,
+        element: <Privateroute><Note></Note></Privateroute>,
+      },
+      {
+        path: "/dashboard/leaderboard",
+        element: <Privateroute><Leaderboard></Leaderboard></Privateroute>,
       },
       {
         path: "/dashboard/profile",
-        element: <Profile></Profile>,
+        element: <Privateroute><Profile></Profile></Privateroute>,
       },
       {
         path: "/dashboard/:id",

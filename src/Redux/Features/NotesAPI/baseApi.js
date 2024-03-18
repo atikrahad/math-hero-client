@@ -24,6 +24,13 @@ const baseApi = createApi({
       query: ({ noteId, email }) => `/notes?email=${email}&noteId=${noteId}`,
       providesTags: ["Post"],
     }),
+    deleteNote: builder.mutation({
+      query: (id) => ({
+        url: `/note?id=${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Post"],
+    }),
     postNote: builder.mutation({
       query: (payload) => ({
         url: "/note",
@@ -62,6 +69,7 @@ export const {
   usePostNoteMutation,
   usePostProblemMutation,
   useGetMyproblemsQuery,
-  useGetProblemQuery
+  useGetProblemQuery,
+  useDeleteNoteMutation
 } = baseApi;
 export default baseApi;

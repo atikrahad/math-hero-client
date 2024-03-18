@@ -1,8 +1,11 @@
 import { IoAdd } from "react-icons/io5";
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaRegEdit } from "react-icons/fa";
 import AddnoteListform from "./NoteComponents/AddnoteListform";
 import {
+  useDeleteNoteMutation,
   useGetNoteQuery,
   useGetNotelistQuery,
 } from "../../../../Redux/Features/NotesAPI/baseApi";
@@ -10,12 +13,18 @@ import { useSelector } from "react-redux";
 import Addnoteform from "./NoteComponents/Addnoteform";
 const Note = () => {
   const [noteId, setNoteId] = useState("");
-  console.log(noteId);
+  const [deletePost] = useDeleteNoteMutation()
   const { email } = useSelector((state) => state.authenTication);
   const { data: notes } = useGetNoteQuery({ email, noteId });
   const { data } = useGetNotelistQuery({ email });
   let [isOpen, setIsOpen] = useState(false);
   let [isnoteOpen, setIsnoteOpen] = useState(false);
+
+
+  const handleDeleteNote= id =>{
+    deletePost(id)
+  }
+
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="shadow-md flex items-center justify-between px-10 my-10 py-5 rounded-md badge-ghost">
@@ -81,9 +90,28 @@ const Note = () => {
               className=""
               dangerouslySetInnerHTML={{ __html: i.notes }}
             ></div>
-            <button className="absolute top-2 right-2">
-              <BsThreeDotsVertical />
-            </button>
+            
+            <div className="dropdown absolute right-2 top-2 dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className=""
+              >
+                <BsThreeDotsVertical />
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-24"
+              >
+                <li>
+                  <button className="flex items-center justify-center"><FaRegEdit/></button>
+                  
+                </li>
+                <li>
+                  <button onClick={()=>handleDeleteNote(i?._id)} className="flex items-center justify-center"><RiDeleteBin6Line/></button>
+                </li>
+              </ul>
+            </div>
           </div>
         ))}
       </div>

@@ -19,6 +19,7 @@ const AddEditor = () => {
   const { data } = useGetMyproblemsQuery({ email });
 
   const handleCreateProblem = () => {
+  
     const problem = {
       email,
       name,
@@ -63,9 +64,9 @@ const AddEditor = () => {
         </button>
       </div>
       <div className="py-10">
-        <h1 className="text-4xl mb-5 font-medium">My all problems:</h1>
+        <h1 className="text-4xl flex flex-col gap-3 mb-5 font-medium">My all problems:</h1>
         {data?.map((i, index) => (
-          <div className="p-5 flex gap-3 bg-slate-100 shadow-xl rounded-md">
+          <div className="p-5 flex gap-3 badge-ghost shadow-xl rounded-md">
             <h1>{index + 1}.</h1>
             <div dangerouslySetInnerHTML={{ __html: i.content }}></div>
           </div>
