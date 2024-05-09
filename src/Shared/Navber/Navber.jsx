@@ -2,16 +2,20 @@ import { NavLink } from "react-router-dom";
 import Button from "../../Components/Button";
 import Logo from "../../Components/Logo";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-scroll";
 import { useGetUserQuery } from "../../Redux/Features/userApis/userApi";
+import useAuth from "../../Router/useAuth";
 const Navber = ({ posi, shadwo }) => {
-  const { email, name } = useSelector((state) => state.authenTication);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
+
+  const {user} = useAuth()
+
+  const email = user?.email
+
   const { data } = useGetUserQuery({ email });
-  console.log(data);
+  
   const handleTheme = (e) => {
     console.log(e.target.checked);
     if (e.target.checked === true) {
@@ -34,16 +38,10 @@ const Navber = ({ posi, shadwo }) => {
         <div className="flex items-center gap-5">
           <Logo></Logo>
           <ul className="space-x-4">
-            {!email && (
+            {!user && (
               <div className="flex gap-5 text-2xl font-medium items-center">
                 <Link to="banner" spy={true} smooth={true} activeClass="active">
                   Home
-                </Link>
-                <Link to="how" spy={true} smooth={true} activeClass="active">
-                  Explore
-                </Link>
-                <Link to="how" spy={true} smooth={true} activeClass="active">
-                  Explore
                 </Link>
                 <Link to="how" spy={true} smooth={true} activeClass="active">
                   Explore
@@ -53,14 +51,16 @@ const Navber = ({ posi, shadwo }) => {
 
             {/* dashboard route */}
 
-            {email && <NavLink to="/dashboard">Problem</NavLink>}
-            {email && <NavLink to="/dashboard/addproblem">Add Problem</NavLink>}
-            {email && <NavLink to="/dashboard/leaderboard">Leaderboard</NavLink>}
-            {email && <NavLink to="notes">My Note</NavLink>}
+            {user && <NavLink to="/dashboard">Problem</NavLink>}
+            {user && <NavLink to="/dashboard/addproblem">Add Problem</NavLink>}
+            {user && (
+              <NavLink to="/dashboard/leaderboard">Leaderboard</NavLink>
+            )}
+            {user && <NavLink to="notes">My Note</NavLink>}
           </ul>
         </div>
         <div className="flex items-center space-x-3">
-          {email && (
+          {user && (
             <label className="swap swap-rotate">
               {/* this hidden checkbox controls the state */}
               <input
@@ -88,7 +88,7 @@ const Navber = ({ posi, shadwo }) => {
               </svg>
             </label>
           )}
-          {!email && (
+          {!user && (
             <div className="flex items-center gap-5">
               <NavLink to="/login">
                 <Button title={"Login"}></Button>
@@ -98,7 +98,7 @@ const Navber = ({ posi, shadwo }) => {
               </NavLink>
             </div>
           )}
-          {email && (
+          {user && (
             <NavLink title="Profile" to="profile">
               {data?.profileImg ? (
                 <img

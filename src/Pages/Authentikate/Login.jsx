@@ -4,34 +4,37 @@ import image from "../../assets/Authentication/image.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import Logo from "../../Components/Logo";
-import { useDispatch } from "react-redux";
-import { loginUser } from "../../Redux/Features/authSlice";
+import useAuth from "../../Router/useAuth";
 
 const Login = () => {
   const [isOpen, setIsopen] = useState(false);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { loginUser } = useAuth();
 
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
-    dispatch(loginUser({ email, password }));
 
-    navigate("/dashboard/profile");
+    loginUser(email, password)
+      .then((user) => {
+        console.log(user);
+        navigate("/dashboard");
+      })
+      .catch((er) => console.log(er));
   };
   return (
-    <div className=" flex items-center justify-center min-h-screen">
-      <div className="max-w-screen-2xl md:max-h-screen overflow-hidden flex items-center mx-auto bg-[#f3f3f3]">
-        <div className="px-10 w-[35%]">
+    <div className="">
+      <div className="w-[100vw] overflow-hidden flex items-center mx-auto">
+        <div className="md:px-1 lg:px-10 w-full md:w-[35%]">
           <div className="hero-content flex-col ">
             <div className="text-center lg:text-left">
+              <div className="flex  md:hidden justify-center"><Logo></Logo></div>
               <h1 className="text-4xl font-bold">Login now!</h1>
             </div>
             <div className="card shrink-0 w-full max-w-sm ">
-              <form onSubmit={handleLogin} className="card-body">
+              <form onSubmit={handleLogin} className="space-y-2">
                 <div className="form-control">
                   <label className="input input-bordered rounded-sm bg-transparent flex items-center gap-2">
                     <svg
@@ -73,7 +76,7 @@ const Login = () => {
                     />
                     <button
                       onClick={() => setIsopen(!isOpen)}
-                      className="absolute text-xl right-10"
+                      className="absolute text-xl right-2"
                     >
                       {isOpen ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
                     </button>
@@ -93,13 +96,12 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="hidden w-[65%]  min-h-screen border md:contents">
-          <img className="h-full" src={image} alt="" />
+        <div style={{backgroundImage: `url(${image})`}} className="w-[0vw] md:w-[80vw] relative flex items-center justify-center bg-cover  h-[100vh] ">
 
-          <div className="absolute md:right-6  lg:right-52  w-[50%] flex-col flex items-center justify-center">
+          <div className="hidden  md:w-[55%] space-y-3 flex-col md:flex items-center justify-center">
             <Logo></Logo>
-            <h1 className="text-4xl font-medium">Welcome To Math Hero</h1>
-            <p className="text-justify">
+            <h1 className="text-3xl text-center font-medium">Welcome To Math Hero</h1>
+            <p className="text-center">
               Unlock a world where numbers unleash creativity, logic, and
               problem-solving skills. Whether you're a math enthusiast, a
               student eager to learn, or a teacher looking for new ways to

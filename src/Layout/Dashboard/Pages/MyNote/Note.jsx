@@ -9,12 +9,14 @@ import {
   useGetNoteQuery,
   useGetNotelistQuery,
 } from "../../../../Redux/Features/NotesAPI/baseApi";
-import { useSelector } from "react-redux";
+
 import Addnoteform from "./NoteComponents/Addnoteform";
+import useAuth from "../../../../Router/useAuth";
 const Note = () => {
   const [noteId, setNoteId] = useState("");
   const [deletePost] = useDeleteNoteMutation()
-  const { email } = useSelector((state) => state.authenTication);
+  const {user} = useAuth()
+  const email = user?.email
   const { data: notes } = useGetNoteQuery({ email, noteId });
   const { data } = useGetNotelistQuery({ email });
   let [isOpen, setIsOpen] = useState(false);

@@ -1,10 +1,12 @@
 import React from "react";
 import Modal from "../../../../../Components/Modal";
-import { useSelector } from "react-redux";
+
 import { usePostNotelistMutation } from "../../../../../Redux/Features/NotesAPI/baseApi";
+import useAuth from "../../../../../Router/useAuth";
 
 const AddnoteListform = ({ isOpen, setIsOpen }) => {
-  const { email } = useSelector((state) => state.authenTication);
+ const {user} = useAuth()
+ const email = user?.email
   const [addNewPost, response] = usePostNotelistMutation()
   const handleCreateNotelist = (e) => {
     e.preventDefault();

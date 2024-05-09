@@ -1,23 +1,17 @@
-import { useSelector } from "react-redux";
+import useAuth from "../../Router/useAuth";
 import Footer from "../../Shared/Footer/Footer";
 import Navber from "../../Shared/Navber/Navber";
 import Banner from "./landingpageComponents/Banner";
 import Howcanuse from "./landingpageComponents/Howcanuse";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+
 
 const Landingpage = () => {
-  const { email } = useSelector((state) => state.authenTication);
+  const {user} = useAuth()
   const navigate = useNavigate();
-  useEffect(() => {
-    if (email) {
-      window.addEventListener("focus", () => {
-        navigate("/dashboard");
-      });
-    } else {
-      navigate("/");
-    }
-  }, [email]);
+  if(user){
+    navigate("/dashboard")
+  }
   return (
     <div>
       <Navber posi={"absolute"}></Navber>

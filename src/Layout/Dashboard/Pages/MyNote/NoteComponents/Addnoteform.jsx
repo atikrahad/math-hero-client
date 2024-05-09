@@ -2,11 +2,13 @@ import React, { useRef, useState } from "react";
 import Modal from "../../../../../Components/Modal";
 import JoditEditor from "jodit-react";
 import { usePostNoteMutation } from "../../../../../Redux/Features/NotesAPI/baseApi";
-import { useSelector } from "react-redux";
+import useAuth from "../../../../../Router/useAuth";
+
 
 const Addnoteform = ({ isOpen, id, setIsOpen }) => {
   const [addNewPost, response] = usePostNoteMutation();
-  const { email } = useSelector((state) => state.authenTication);
+  const {user} = useAuth()
+  const email  = user?.email
   const editor = useRef();
   const [notes, seNotes] = useState("");
   const handleAddnote = () => {

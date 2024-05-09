@@ -1,22 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useGetUserQuery } from "../../../../Redux/Features/userApis/userApi";
 import { RxExit } from "react-icons/rx";
 import Calendar from "react-calendar";
 import { useState } from "react";
-import { signOut } from "firebase/auth";
-import auth from "../../../../Firebase/firebase";
-import { logoutUser } from "../../../../Redux/Features/authSlice";
+import useAuth from "../../../../Router/useAuth";
+
+
 const Profile = () => {
   const [value, setValue] = useState(new Date());
-  const { email } = useSelector((state) => state.authenTication);
+  const {logout, user} = useAuth()
+  const email = user?.email
   const { data } = useGetUserQuery({ email });
-  const dispatch = useDispatch()
+ 
   const handleLogout = () => {
-    signOut(auth)
-    dispatch(logoutUser({
-        email: '',
-        name: ''
-    }))
+    logout()
   };
   return (
     <div className="max-w-screen-xl mx-auto my-20">
