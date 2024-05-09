@@ -108,11 +108,11 @@ const Navber = ({ posi, shadwo }) => {
                 />
               ) : (
                 <div
-                  style={{ backgroundColor: `hsl(${name.length},50%, 50%)` }}
+                  style={{ backgroundColor: `hsl(${data?.name.length**4},50%, 50%)` }}
                   className="h-12 flex items-center justify-center  w-12 rounded-full "
                 >
                   <h1 className="text-3xl text-white font-medium">
-                    {name.slice(0, 1)}
+                    {data?.name.slice(0, 1)}
                   </h1>
                 </div>
               )}

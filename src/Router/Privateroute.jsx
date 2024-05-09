@@ -1,12 +1,15 @@
 import { Navigate } from "react-router-dom";
 import useAuth from "./useAuth";
+import loadimg from "../assets/Loading/loading.gif"
 
 
 const Privateroute = ({ children }) => {
   const {user, loading} = useAuth()
 
   if (loading) {
-    return <h1>Loading......</h1>;
+    return <div className="h-[80vh] justify-center flex items-center">
+      <img className="w-40" src={loadimg} alt="" />
+    </div>;
   }
 
   if (user) {

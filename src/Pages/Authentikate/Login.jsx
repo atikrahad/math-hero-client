@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button";
 import image from "../../assets/Authentication/image.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -9,7 +9,11 @@ import useAuth from "../../Router/useAuth";
 const Login = () => {
   const [isOpen, setIsopen] = useState(false);
   const navigate = useNavigate();
-  const { loginUser } = useAuth();
+  const { loginUser, user } = useAuth();
+
+  if(user){
+    return <Navigate to={"/dashboard"}></Navigate>
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();

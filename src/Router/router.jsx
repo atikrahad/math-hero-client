@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         index: true,
         element: (
           
-            <Problems></Problems>
+            <Privateroute><Problems></Problems></Privateroute>
           
         ),
       },
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/:id",
-        element: <Details></Details>,
+        element: <Privateroute><Details></Details></Privateroute>,
       },
     ],
   },

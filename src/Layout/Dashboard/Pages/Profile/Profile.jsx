@@ -25,7 +25,7 @@ const Profile = () => {
                 <img src={data?.profilepic} />
               ) : (
                 <div
-                  style={{ background: `hsl(${data?.name.length},50%, 50%)` }}
+                  style={{ background: `hsl(${data?.name.length ** 4},50%, 50%)` }}
                   className={`flex items-center justify-center h-20 w-20 text-4xl text-white rounded-lg>`}
                 >
                   {data?.name.slice(0, 1)}
