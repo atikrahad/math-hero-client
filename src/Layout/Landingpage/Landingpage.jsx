@@ -5,18 +5,13 @@ import Banner from "./landingpageComponents/Banner";
 import Howcanuse from "./landingpageComponents/Howcanuse";
 import { Navigate } from "react-router-dom";
 
-
 const Landingpage = () => {
-  const {user} = useAuth()
-  if(user){
-    return <Navigate to={"/dashboard"}></Navigate>
-  }
+  const { user } = useAuth();
+
   return (
     <div>
-      <Navber posi={"absolute"}></Navber>
       <Banner></Banner>
       <Howcanuse></Howcanuse>
-      <Footer></Footer>
     </div>
   );
 };

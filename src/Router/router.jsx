@@ -10,11 +10,50 @@ import Privateroute from "./Privateroute";
 import Profile from "../Layout/Dashboard/Pages/Profile/Profile";
 import Details from "../Layout/Dashboard/Pages/Problems/Details";
 import Leaderboard from "../Layout/Dashboard/Pages/Leaderboard/Leaderboard";
+import Childgame from "../Layout/Dashboard/Pages/Childgame/Childgame";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landingpage></Landingpage>,
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        index: true,
+        element: <Landingpage></Landingpage>
+      },
+      {
+        path: "/childgame",
+        element: <Childgame></Childgame>,
+      },
+      {
+        path: '/problems',
+        element: (
+          
+            <Problems></Problems>
+          
+        ),
+      },
+      {
+        path: "/addproblem",
+        element: <Privateroute><AddEditor></AddEditor></Privateroute>,
+      },
+      {
+        path: "/notes",
+        element: <Privateroute><Note></Note></Privateroute>,
+      },
+      {
+        path: "/leaderboard",
+        element: <Privateroute><Leaderboard></Leaderboard></Privateroute>,
+      },
+      {
+        path: "/profile",
+        element: <Privateroute><Profile></Profile></Privateroute>,
+      },
+      {
+        path: "/:id",
+        element: <Privateroute><Details></Details></Privateroute>,
+      },
+    ],
   },
   {
     path: "/login",
@@ -27,36 +66,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
-    children: [
-      {
-        index: true,
-        element: (
-          
-            <Privateroute><Problems></Problems></Privateroute>
-          
-        ),
-      },
-      {
-        path: "/dashboard/addproblem",
-        element: <Privateroute><AddEditor></AddEditor></Privateroute>,
-      },
-      {
-        path: "/dashboard/notes",
-        element: <Privateroute><Note></Note></Privateroute>,
-      },
-      {
-        path: "/dashboard/leaderboard",
-        element: <Privateroute><Leaderboard></Leaderboard></Privateroute>,
-      },
-      {
-        path: "/dashboard/profile",
-        element: <Privateroute><Profile></Profile></Privateroute>,
-      },
-      {
-        path: "/dashboard/:id",
-        element: <Privateroute><Details></Details></Privateroute>,
-      },
-    ],
+    
   },
 ]);
 

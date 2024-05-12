@@ -10,12 +10,12 @@ const Navber = ({ posi, shadwo }) => {
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
 
-  const {user} = useAuth()
+  const { user } = useAuth();
 
-  const email = user?.email
+  const email = user?.email;
 
   const { data } = useGetUserQuery({ email });
-  
+
   const handleTheme = (e) => {
     console.log(e.target.checked);
     if (e.target.checked === true) {
@@ -35,32 +35,26 @@ const Navber = ({ posi, shadwo }) => {
   return (
     <div className={`${posi} ${shadwo} w-full`}>
       <div className="flex justify-between items-center py-4 mx-auto max-w-screen-xl ">
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-10 text-xl font-medium">
           <Logo></Logo>
           <ul className="space-x-4">
-            {!user && (
-              <div className="flex gap-5 text-2xl font-medium items-center">
-                <Link to="banner" spy={true} smooth={true} activeClass="active">
-                  Home
-                </Link>
-                <Link to="how" spy={true} smooth={true} activeClass="active">
-                  Explore
-                </Link>
-              </div>
-            )}
+            <NavLink to="/" >
+              Home
+            </NavLink>
+            <NavLink to="/childgame" >
+              Child Game
+            </NavLink>
 
             {/* dashboard route */}
 
-            {user && <NavLink to="/dashboard">Problem</NavLink>}
-            {user && <NavLink to="/dashboard/addproblem">Add Problem</NavLink>}
-            {user && (
-              <NavLink to="/dashboard/leaderboard">Leaderboard</NavLink>
-            )}
-            {user && <NavLink to="notes">My Note</NavLink>}
+            {<NavLink to="/problems">Problem</NavLink>}
+            {user && <NavLink to="/addproblem">Add Problem</NavLink>}
+            {user && <NavLink to="/leaderboard">Leaderboard</NavLink>}
+            {user && <NavLink to="/notes">My Note</NavLink>}
           </ul>
         </div>
         <div className="flex items-center space-x-3">
-          {user && (
+          { (
             <label className="swap swap-rotate">
               {/* this hidden checkbox controls the state */}
               <input
@@ -99,7 +93,7 @@ const Navber = ({ posi, shadwo }) => {
             </div>
           )}
           {user && (
-            <NavLink title="Profile" to="profile">
+            <NavLink title="Profile" to="/profile">
               {data?.profileImg ? (
                 <img
                   className="h-12 w-12 rounded-full"
@@ -108,7 +102,9 @@ const Navber = ({ posi, shadwo }) => {
                 />
               ) : (
                 <div
-                  style={{ backgroundColor: `hsl(${data?.name.length**4},50%, 50%)` }}
+                  style={{
+                    backgroundColor: `hsl(${data?.name.length ** 4},50%, 50%)`,
+                  }}
                   className="h-12 flex items-center justify-center  w-12 rounded-full "
                 >
                   <h1 className="text-3xl text-white font-medium">
