@@ -7,8 +7,7 @@ const Howcanuse = () => {
   return (
     <div
     id="how"
-      style={{ backgroundImage: `url(${img2})` }}
-      className="py-72 max-w-screen-2xl bg-cover mx-auto"
+      className="py-72 max-w-screen-2xl mx-auto"
     >
       <h1 className="text-4xl pb-10 font-bold text-center">
         How to create a Problem

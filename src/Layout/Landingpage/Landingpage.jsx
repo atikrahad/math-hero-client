@@ -1,9 +1,7 @@
 import useAuth from "../../Router/useAuth";
-import Footer from "../../Shared/Footer/Footer";
-import Navber from "../../Shared/Navber/Navber";
 import Banner from "./landingpageComponents/Banner";
 import Howcanuse from "./landingpageComponents/Howcanuse";
-import { Navigate } from "react-router-dom";
+import Servies from "./landingpageComponents/Servies";
 
 const Landingpage = () => {
   const { user } = useAuth();
@@ -11,6 +9,7 @@ const Landingpage = () => {
   return (
     <div>
       <Banner></Banner>
+      <Servies></Servies>
       <Howcanuse></Howcanuse>
     </div>
   );
