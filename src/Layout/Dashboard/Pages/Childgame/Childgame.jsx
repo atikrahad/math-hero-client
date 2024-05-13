@@ -9,7 +9,7 @@ const Childgame = () => {
         <h1 className="text-center mt-5">Double click to switch another tab</h1>
       <div
         role="tablist"
-        className="tabs max-w-screen-xl mx-auto py-5 tabs-lifted"
+        className="tabs max-w-screen-xl mx-auto py-5 tabs-lg tabs-lifted"
       >
         <input
           type="radio"
@@ -21,7 +21,7 @@ const Childgame = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+          className="tab-content bg-base-100 border-base-300 rounded-box px-6"
         >
           <Add />
         </div>
@@ -35,7 +35,7 @@ const Childgame = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+          className="tab-content bg-base-100 border-base-300 rounded-box px-6"
         >
           <Subtract />
         </div>
@@ -49,7 +49,7 @@ const Childgame = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+          className="tab-content bg-base-100 border-base-300 rounded-box px-6"
         >
           <Multiply />
         </div>
@@ -62,7 +62,7 @@ const Childgame = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+          className="tab-content bg-base-100 border-base-300 rounded-box px-6"
         >
           <Divide />
         </div>
